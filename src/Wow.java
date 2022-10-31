@@ -7,6 +7,9 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Comparator;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -33,15 +36,15 @@ public class Wow {
     @JsonProperty("year")
     private Integer year;
     @JsonProperty("release_date")
-    private String releaseDate;
+    private LocalDate releaseDate;
     @JsonProperty("director")
     private String director;
     @JsonProperty("character")
     private String character;
     @JsonProperty("movie_duration")
-    private String movieDuration;
+    private LocalTime movieDuration;
     @JsonProperty("timestamp")
-    private String timestamp;
+    private LocalTime timestamp;
     @JsonProperty("full_line")
     private String fullLine;
     @JsonProperty("current_wow_in_movie")
@@ -74,12 +77,13 @@ public class Wow {
     }
 
 
-    public String getReleaseDate() {
+    public LocalDate getReleaseDate() {
         return releaseDate;
     }
 
     public void setReleaseDate(String releaseDate) {
-        this.releaseDate = releaseDate;
+
+        this.releaseDate = LocalDate.parse(releaseDate, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
     }
 
     public String getDirector() {
@@ -99,23 +103,25 @@ public class Wow {
         this.character = character;
     }
 
-    public String getMovieDuration() {
+    public LocalTime getMovieDuration() {
         return movieDuration;
     }
 
 
     public void setMovieDuration(String movieDuration) {
-        this.movieDuration = movieDuration;
+
+        this.movieDuration = LocalTime.parse(movieDuration, DateTimeFormatter.ofPattern("HH:mm:ss"));
     }
 
 
-    public String getTimestamp() {
+    public LocalTime getTimestamp() {
         return timestamp;
     }
 
 
     public void setTimestamp(String timestamp) {
-        this.timestamp = timestamp;
+
+        this.timestamp = LocalTime.parse(timestamp, DateTimeFormatter.ofPattern("HH:mm:ss"));
     }
 
 
