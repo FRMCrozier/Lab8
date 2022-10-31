@@ -13,7 +13,7 @@ import java.net.URL;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 
-public class JGetter {
+public class JGetter extends Thread {
     public static Wows loadByURL(String url) throws IOException {
         StringBuilder jsonIn = new StringBuilder();
         InputStream is = null;
